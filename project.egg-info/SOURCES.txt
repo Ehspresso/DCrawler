@@ -1,0 +1,14 @@
+setup.py
+dcrawl/__init__.py
+dcrawl/items.py
+dcrawl/middlewares.py
+dcrawl/pipelines.py
+dcrawl/settings.py
+dcrawl/start_crawl.py
+dcrawl/spiders/__init__.py
+dcrawl/spiders/my_spider.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt
