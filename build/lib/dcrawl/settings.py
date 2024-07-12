@@ -140,8 +140,7 @@ ITEM_PIPELINES = {
 #REDIS_ITEMS_SERIALIZER = 'json.dumps'
 
 # Specify the host and port to use when connecting to Redis (optional).
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
+REDIS_URL = 'redis://default:n62lRVeZJhfSS2EMok0CKGSI4If3I59T@redis-15790.c98.us-east-1-4.ec2.redns.redis-cloud.com:15790'
 
 # Specify the full Redis URL for connecting (optional).
 # If set, this takes precedence over the REDIS_HOST and REDIS_PORT settings.

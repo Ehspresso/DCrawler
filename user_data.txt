@@ -4,6 +4,7 @@
 sudo apt-get update -y
 sudo apt-get install -y unzip python3-pip
 sudo apt-get install python3.12-venv -y
+sudo apt-get install redis-tools -y
 
 # Download and install AWS CLI
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -21,8 +22,16 @@ source /home/ubuntu/venv/bin/activate
 pip install -r /home/ubuntu/dcrawl/requirements.txt
 
 # Start services
-sudo apt-get install redis-server -y
-sudo head -100 /home/ubuntu/dcrawl/scrapyd.conf > /home/ubuntu/test.txt
 cd /home/ubuntu/dcrawl
 sudo /home/ubuntu/venv/bin/scrapyd &
 sudo /home/ubuntu/venv/bin/python3 /home/ubuntu/dcrawl/health-check.py &
+
+# Connect to redis queue and push starting url
+redis-cli -u redis://default:n62lRVeZJhfSS2EMok0CKGSI4If3I59T@redis-15790.c98.us-east-1-4.ec2.redns.redis-cloud.com:15790 << EOF
+lpush dcrawl:urls "http://coindesk.com"
+quit
+EOF
+
+# Deploy and start spider
+sudo /home/ubuntu/venv/bin/scrapyd-deploy
+curl http://0.0.0.0:6800/schedule.json -d project=dcrawl -d spider=myspider

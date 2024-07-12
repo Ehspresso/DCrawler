@@ -6,6 +6,7 @@ from scrapy.exceptions import CloseSpider
 class MySpider(RedisCrawlSpider):
     name = 'myspider'
     max_idle_time = 2
+    redis_key = 'dcrawl:urls'
 
     allowed_domains = ["coindesk.com"]
 

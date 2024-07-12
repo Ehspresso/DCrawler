@@ -4,7 +4,6 @@ dcrawl/items.py
 dcrawl/middlewares.py
 dcrawl/pipelines.py
 dcrawl/settings.py
-dcrawl/start_crawl.py
 dcrawl/spiders/__init__.py
 dcrawl/spiders/my_spider.py
 project.egg-info/PKG-INFO
